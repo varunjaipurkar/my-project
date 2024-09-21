@@ -56,3 +56,106 @@
     <script src="app.js"></script>
 </body>
 </html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.section {
+    padding: 50px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#project-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project-item {
+    background-color: #ddd;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(33% - 40px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+// JavaScript to handle dynamic content
+const projects = [
+    { title: 'Project 1', description: 'Description for project 1' },
+    { title: 'Project 2', description: 'Description for project 2' },
+    { title: 'Project 3', description: 'Description for project 3' },
+];
+
+function loadProjects() {
+    const projectList = document.getElementById('project-list');
+
+    projects.forEach((project) => {
+        const projectItem = document.createElement('div');
+        projectItem.classList.add('project-item');
+
+        const projectTitle = document.createElement('h3');
+        projectTitle.innerText = project.title;
+
+        const projectDescription = document.createElement('p');
+        projectDescription.innerText = project.description;
+
+        projectItem.appendChild(projectTitle);
+        projectItem.appendChild(projectDescription);
+
+        projectList.appendChild(projectItem);
+    });
+}
+
+// Load projects when the page is ready
+document.addEventListener('DOMContentLoaded', loadProjects);
+
+// Contact form submission handler
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    alert(`Thank you, ${name}! We have received your message.`);
+    // Here, you can add an AJAX call to send the data to your server or API
+});
+
